@@ -1,7 +1,4 @@
 .action-item {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
   width: '100%';
   padding: 1em 0;
   box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
@@ -12,7 +9,6 @@
 .action-details {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 25%;
   div {

@@ -9,6 +9,7 @@ import { Action } from '../action';
 })
 export class DashboardPage implements OnInit {
   actions: Action[];
+  filteredActions: Action[];
 
   constructor(private client: DashboardService) {}
 
@@ -18,6 +19,18 @@ export class DashboardPage implements OnInit {
 
   loadActions(): void {
     this.client.fetchActions()
-      .subscribe((actions) => this.actions = actions);
+      .subscribe((actions) => {
+        this.actions = actions;
+        this.filteredActions = actions;
+      });
+  }
+
+  filterActions(input: string): Action[] {
+    const regex = new RegExp(input, 'ig');
+    return this.actions.filter(action => regex.test(action.action));
+  }
+
+  onChange(event): void {
+    this.filteredActions = this.filterActions(event.target.value);
   }
 }
