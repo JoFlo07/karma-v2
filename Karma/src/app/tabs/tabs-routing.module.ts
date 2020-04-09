@@ -13,7 +13,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-            import('../Dashboard/dashboard.module').then(m => m.DashboardPageModule)
+            import('../dashboard/dashboard.module').then(m => m.DashboardPageModule)
           }
         ]
       },
@@ -23,7 +23,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../Statistics/statistics.module').then(m => m.StatisticsPageModule)
+              import('../statistics/statistics.module').then(m => m.StatisticsPageModule)
           }
         ]
       },
