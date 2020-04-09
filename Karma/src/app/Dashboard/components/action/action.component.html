@@ -1,3 +1,15 @@
-<ion-item>
-  <ion-label>{{action.action}}</ion-label>
+<ion-item
+  class="action-item"
+  button="true"
+  lines="none"
+>
+  <div class="action-details">
+    <ion-thumbnail
+      slot="start"
+    >
+      <img [src]="this.getCategoryIcon(action.category)">
+    </ion-thumbnail>
+    <div>{{action.exp_points}} EXP</div>
+  </div>
+  <div>{{action.action}}</div>
 </ion-item>

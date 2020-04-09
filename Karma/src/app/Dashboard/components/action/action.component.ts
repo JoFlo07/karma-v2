@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Action } from 'src/app/action';
 
 @Component({
@@ -6,11 +6,27 @@ import { Action } from 'src/app/action';
   templateUrl: './action.component.html',
   styleUrls: ['./action.component.scss'],
 })
-export class ActionComponent implements OnInit {
+export class ActionComponent {
   @Input() action: Action;
 
   constructor() { }
 
-  ngOnInit() {}
+  getCategoryIcon(category: string): string {
+    const basePath = '../../../../assets/icons';
+    switch (category) {
+      case 'Transport':
+        return basePath + '/bus.png';
+      case 'Relationship':
+        return basePath + '/friends.png';
+      case 'Environment':
+        return basePath + '/planet-earth.png';
+      case 'People':
+        return basePath + '/charity.png';
+      case 'Volunteering':
+        return basePath + '/b2b.png';
+      default:
+        return basePath + '/planet-earth.png';
+    }
+  }
 
 }
