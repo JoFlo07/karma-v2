@@ -1,0 +1,7 @@
+{
+  "name": "Karma",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
