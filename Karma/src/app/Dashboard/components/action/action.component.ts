@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Action } from 'src/app/action';
 
 @Component({
   selector: 'app-action',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./action.component.scss'],
 })
 export class ActionComponent implements OnInit {
+  @Input() action: Action;
 
   constructor() { }
 

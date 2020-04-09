@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DashboardPage } from './dashboard.page';
 
+import { ActionComponent } from '../dashboard/components/action/action.component';
+
 @NgModule({
   imports: [
     IonicModule,
@@ -12,6 +14,9 @@ import { DashboardPage } from './dashboard.page';
     FormsModule,
     RouterModule.forChild([{ path: '', component: DashboardPage }])
   ],
-  declarations: [DashboardPage]
+  declarations: [
+    DashboardPage,
+    ActionComponent,
+  ]
 })
 export class DashboardPageModule {}

@@ -8,7 +8,7 @@ import { Action } from '../action';
   styleUrls: ['dashboard.page.scss']
 })
 export class DashboardPage implements OnInit {
-  actions;
+  actions: Action[];
 
   constructor(private client: DashboardService) {}
 

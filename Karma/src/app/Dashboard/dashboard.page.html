@@ -4,4 +4,7 @@
       <ion-title size="medium">Dashboard</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-list *ngFor="let action of actions">
+      <app-action [action]="action"></app-action>
+  </ion-list>
 </ion-content>
