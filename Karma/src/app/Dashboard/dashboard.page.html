@@ -1,4 +1,6 @@
-<ion-content [fullscreen]="true">
+<ion-content
+  [fullscreen]="true"
+>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="medium">Dashboard</ion-title>
@@ -10,6 +12,12 @@
     animated
   >
   </ion-searchbar>
+  <div
+    class="no-match"
+    *ngIf="!filteredActions.length">
+    <ion-icon size="large" name="sad-outline"></ion-icon>
+    <h3>No match. Try again!</h3>
+  </div>
   <ion-list
     *ngFor="let action of filteredActions">
       <app-action [action]="action"></app-action>

@@ -1,3 +1,7 @@
-ion-content ion-toolbar {
-  --background: translucent;
+.no-match {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50%;
 }
