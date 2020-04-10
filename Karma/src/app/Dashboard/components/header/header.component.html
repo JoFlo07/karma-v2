@@ -2,13 +2,30 @@
   collapse="condense"
   class="header"
 >
-  <div class="avatar-container">
+  <div class="upper-header-container">
     <ion-avatar>
       <img src="../../assets//avatar.png">
     </ion-avatar>
+    <div class="icon-container">
+      <ion-button
+        fill="clear"
+        color="light"
+      >
+        <ion-icon
+          slot="icon-only"
+          name="log-out-outline"
+        >
+        </ion-icon>
+      </ion-button>
+    </div>
   </div>
-  <div class="progress-container">
-    <ion-progress-bar value="0.5" class="progress-bar">
+  <div class="lower-header-container">
+    <span>Lvl 1</span>
+    <ion-progress-bar
+      value="0.5"
+      class="progress-bar"
+    >
     </ion-progress-bar>
+    <span>Lvl 2</span>
   </div>
 </ion-header>
