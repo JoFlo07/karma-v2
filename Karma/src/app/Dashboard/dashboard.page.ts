@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
-import { HeaderComponent } from './components/header/header.component';
 import { Action } from '../action';
 
 @Component({
