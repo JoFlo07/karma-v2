@@ -11,6 +11,10 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderModule } from './header/header.module';
 
+import { AngularFireModule } from '@angular/fire';
+import { firebaseConfig } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -19,7 +23,10 @@ import { HeaderModule } from './header/header.module';
     HttpClientModule,
     HeaderModule,
     IonicModule.forRoot(),
-    AppRoutingModule],
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+  ],
   providers: [
     StatusBar,
     SplashScreen,
