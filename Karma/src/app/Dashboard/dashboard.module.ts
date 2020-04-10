@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { DashboardPage } from './dashboard.page';
 
 import { ActionComponent } from '../dashboard/components/action/action.component';
+import { HeaderComponent } from '../dashboard/components/header/header.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { ActionComponent } from '../dashboard/components/action/action.component
   declarations: [
     DashboardPage,
     ActionComponent,
+    HeaderComponent,
   ]
 })
 export class DashboardPageModule {}
