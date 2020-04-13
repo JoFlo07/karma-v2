@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderModule } from './header/header.module';
 
+import { FirebaseAuthentication } from '@ionic-native/firebase-authentication/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,6 +26,7 @@ import { HeaderModule } from './header/header.module';
   providers: [
     StatusBar,
     SplashScreen,
+    FirebaseAuthentication,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
