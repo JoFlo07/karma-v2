@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Action } from 'src/app/action';
+import { Action } from 'src/app/types/interfaces';
 
 @Component({
   selector: 'app-action',

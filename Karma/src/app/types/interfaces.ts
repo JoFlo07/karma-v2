@@ -4,3 +4,9 @@ export interface Action {
   difficulty: string;
   exp_points: number;
 }
+
+export interface User {
+  username: string;
+  email: string;
+  password: string;
+}

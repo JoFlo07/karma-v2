@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
-import { Action } from '../action';
+import { Action } from '../types/interfaces';
 
 @Component({
   selector: 'app-dashboard-page',
