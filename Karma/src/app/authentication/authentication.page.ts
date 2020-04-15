@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { User } from '../types/interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authentication',
@@ -15,23 +16,19 @@ export class AuthenticationPage {
     password: new FormControl('')
   });
   user$: User;
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   onSubmit() {
     this.auth.signUp(this.signUpForm.value)
-      .subscribe({
-        next: null,
-        error: (error) => alert(error)
-      });
-    this.auth.createUser(this.signUpForm.value)
       .subscribe({
         next: (user) => {
           if (user) {
             const parsedUser = Object.values(user)[0];
             this.user$ = parsedUser;
+            this.router.navigate(['/tabs']);
           }
         },
-        error: (error) => console.error(error),
+        error: (error) => alert(error)
       });
   }
 }

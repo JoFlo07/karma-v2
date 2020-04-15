@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: AuthenticationPage
-  }
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('../tabs/tabs.module').then(m => m.TabsPageModule)
+  },
 ];
 
 @NgModule({

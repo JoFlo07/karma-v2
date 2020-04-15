@@ -19,7 +19,7 @@ export class AuthService {
 
   signUp(signUpInfo: User): Observable<User> {
     const { email, password } = signUpInfo;
-    return from(this.firebaseAuthentication.createUserWithEmailAndPassword(email, password));
+    return concat(from(this.firebaseAuthentication.createUserWithEmailAndPassword(email, password)), this.createUser(signUpInfo));
   }
   createUser(signUpInfo: User): Observable<void | User> {
     const { username, email } = signUpInfo;
