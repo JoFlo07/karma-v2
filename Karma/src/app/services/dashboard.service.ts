@@ -12,6 +12,6 @@ export class DashboardService {
   constructor(private http: HttpClient) { }
 
   fetchActions(): Observable<Action[]> {
-    return this.http.get<Action[]>(this.baseUrl + '/actions/-M4T0IKGM1P6YKgdUfP6.json');
+    return this.http.get<Action[]>(this.baseUrl + '/actions.json');
   }
 }

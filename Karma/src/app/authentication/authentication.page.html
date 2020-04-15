@@ -11,4 +11,7 @@
     <ion-input formControlName="password" type="password" placeholder="Enter Password"></ion-input>
     <ion-button type="submit">Sign Up</ion-button>
   </form>
+  <div *ngIf="user$">
+    {{user$.username}}
+  </div>
 </ion-content>
