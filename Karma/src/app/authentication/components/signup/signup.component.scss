@@ -1,0 +1,43 @@
+.icon {
+  height: 250px;
+  width: 250px;
+}
+
+.icon-container {
+  padding-top: 30px;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  height: 20%;
+}
+
+.input-field {
+  --background: transparent;
+  --padding-start: 1em;
+  --padding-end: 1em;
+  width: 80%;
+  border-bottom: 1px solid black;
+  margin: 10px auto;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.navigate {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 100px;
+}
+
+.link {
+  text-decoration: none;
+}

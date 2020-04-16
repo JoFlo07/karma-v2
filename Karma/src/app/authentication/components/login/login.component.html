@@ -1,3 +1,20 @@
-<p>
-  login works!
-</p>
+
+<ion-content>
+  <div class="icon-container">
+    <ion-img src="../../../assets/karma-login.png" alt="karma-logo" class="icon"></ion-img>
+  </div>
+  <div class="form-container">
+    <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
+      <ion-input formControlName="email" type="text" placeholder="Your email" class="input-field">
+      </ion-input>
+      <ion-input formControlName="password" type="password" placeholder="Your password" class="input-field">
+      </ion-input>
+      <div class="button-container">
+        <ion-button type="submit">
+          Log In
+        </ion-button>
+      </div>
+    </form>
+  </div>
+  <div class="navigate">New here? &nbsp; <a class="link" routerLink="/signUp">Sign Up</a></div>
+</ion-content>

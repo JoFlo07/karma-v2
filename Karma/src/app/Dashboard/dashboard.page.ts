@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
 import { Action } from '../types/interfaces';
+import { Plugins } from '@capacitor/core';
+import { from } from 'rxjs';
+
+const { Storage } = Plugins;
 
 @Component({
   selector: 'app-dashboard-page',
@@ -15,6 +19,8 @@ export class DashboardPage implements OnInit {
 
   ngOnInit() {
     this.loadActions();
+    from(Storage.get({ key: 'authenticated'}))
+      .subscribe((user) => console.log(user));
   }
 
   loadActions(): void {

@@ -21,18 +21,25 @@ export class AuthService {
     const { email, password } = signUpInfo;
     return concat(from(this.firebaseAuthentication.createUserWithEmailAndPassword(email, password)), this.createUser(signUpInfo));
   }
-  createUser(signUpInfo: User): Observable<void | User> {
+  createUser(signUpInfo: User): Observable<User | void> {
     const { username, email } = signUpInfo;
     const userId = uuidv4();
     const body = {
-      [userId]: {
         username,
         email,
-        completedActions: 0,
-        ownActions: []
-      }
+        completedActions: 0
     };
-    const storedValue = from(Storage.set({ key: 'id', value: userId}));
-    return concat(storedValue, this.http.put<User>(this.baseUrl + '/users.json', body));
+    const storedValue = from(Storage.set({ key: 'authenticated', value: 'true'}));
+    return concat(storedValue, this.http.put<User>(this.baseUrl + `/users/${userId}.json`, body));
+  }
+
+  signIn(email: string, password: string): Observable<void | object> {
+    const storedValue = from(Storage.set({ key: 'authenticated', value: 'true' }));
+    return concat(storedValue, from(this.firebaseAuthentication.signInWithEmailAndPassword(email, password)));
+  }
+
+  signOut(): Observable<void> {
+    return from(Storage.clear());
   }
 }
+

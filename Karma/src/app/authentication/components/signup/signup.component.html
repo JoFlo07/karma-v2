@@ -1,3 +1,42 @@
-<p>
-  signup works!
-</p>
+<ion-content>
+  <div class="icon-container">
+    <ion-img
+      src="../../../assets/karma-login.png"
+      alt="karma-logo"
+      class="icon"
+    ></ion-img>
+  </div>
+  <div class="form-container">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <ion-input
+        formControlName="username"
+        type="text"
+        placeholder="Add your username"
+        class="input-field"
+      >
+      </ion-input>
+      <ion-input
+        formControlName="email"
+        type="text"
+        placeholder="Add your email"
+        class="input-field"
+      >
+      </ion-input>
+      <ion-input
+        formControlName="password"
+        type="password"
+        placeholder="Add your password"
+        class="input-field"
+        >
+      </ion-input>
+      <div class="button-container">
+        <ion-button
+          type="submit"
+        >
+          Sign Up
+        </ion-button>
+      </div>
+    </form>
+  </div>
+  <div class="navigate">Already have an account? &nbsp; <a class="link" routerLink="/login">Login</a></div>
+</ion-content>
