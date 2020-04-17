@@ -13,6 +13,7 @@ const { Storage } = Plugins;
   providedIn: 'root'
 })
 export class AuthService {
+  authentiacted: string;
   baseUrl = 'https://karma-f108e.firebaseio.com';
 
   constructor(private firebaseAuthentication: FirebaseAuthentication, private http: HttpClient) { }
@@ -41,5 +42,12 @@ export class AuthService {
   signOut(): Observable<void> {
     return from(Storage.clear());
   }
+
+  async isAuthenticated(): Promise<boolean> {
+   const storedKey = await Storage.get({ key: 'authenticated'});
+   console.log(storedKey.value, 'STORED KEY')
+   return storedKey.value ? true : false;
+  }
+
 }
 
