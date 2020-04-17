@@ -22,7 +22,7 @@ export class SignupComponent {
       .subscribe({
         next: (user) => {
           if (user) {
-            this.router.navigate(['/tabs']);
+            this.router.navigate(['/tabs/main/dashboard']);
           }
         },
         error: (error) => alert(error)

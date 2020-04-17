@@ -20,7 +20,7 @@ export class DashboardPage implements OnInit {
   ngOnInit() {
     this.loadActions();
     from(Storage.get({ key: 'authenticated'}))
-      .subscribe((user) => console.log(user));
+      .subscribe((user) => console.log('authenticated', user.value));
   }
 
   loadActions(): void {

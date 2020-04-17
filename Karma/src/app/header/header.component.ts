@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   signOut() {
     this.auth.signOut()
       .subscribe({
-        next: () => this.router.navigate(['/']),
+        next: () => this.router.navigate(['/auth']),
         error: (e) => console.log(e),
       });
   }

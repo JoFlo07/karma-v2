@@ -23,7 +23,7 @@ export class LoginComponent {
       .subscribe({
         next: (user) => {
           if (user === null) {
-            this.router.navigate(['/tabs']);
+            this.router.navigate(['/tabs/main/dashboard']);
           }
         },
         error: (error) => alert(error)

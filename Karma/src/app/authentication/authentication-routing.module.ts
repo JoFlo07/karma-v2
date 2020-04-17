@@ -7,11 +7,6 @@ import { SignupComponent } from './components/signup/signup.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
-  {
-    path: 'login',
     component: LoginComponent
   },
   {
@@ -20,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'tabs',
-    loadChildren: () => import('../tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('../tabs/tabs.module').then(m => m.TabsPageModule),
   },
 ];
 

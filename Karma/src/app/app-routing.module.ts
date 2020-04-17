@@ -1,16 +1,23 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes, CanActivate } from '@angular/router';
+import {
+  AuthGuardService as AuthGuard
+} from './services/auth-guard.service';
 
-
-// TODO: Add route guard on authenticaton to check if user is authenticated -> id so direct him to dashboard
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     loadChildren: () => import('./authentication/authentication.module').then( m => m.AuthenticationPageModule)
   },
   {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    redirectTo: '/tabs',
+    pathMatch: 'full'
   },
 ];
 @NgModule({
