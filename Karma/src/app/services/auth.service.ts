@@ -20,23 +20,38 @@ export class AuthService {
 
   signUp(signUpInfo: User): Observable<User> {
     const { email, password } = signUpInfo;
-    return concat(from(this.firebaseAuthentication.createUserWithEmailAndPassword(email, password)), this.createUser(signUpInfo));
+    return from(this.firebaseAuthentication.createUserWithEmailAndPassword(email, password));
   }
+
   createUser(signUpInfo: User): Observable<User | void> {
     const { username, email } = signUpInfo;
     const userId = uuidv4();
     const body = {
         username,
         email,
-        completedActions: 0
+        completedActions: 0,
+        exp_points: 0,
+        level: 1,
     };
-    const storedValue = from(Storage.set({ key: 'authenticated', value: 'true'}));
-    return concat(storedValue, this.http.put<User>(this.baseUrl + `/users/${userId}.json`, body));
+    return this.http.put<User>(this.baseUrl + `/users/${userId}.json`, body)
+      .pipe(
+        () => from(Storage.set({ key: 'authenticated', value: 'true' })),
+      );
   }
 
-  signIn(email: string, password: string): Observable<void | object> {
-    const storedValue = from(Storage.set({ key: 'authenticated', value: 'true' }));
-    return concat(storedValue, from(this.firebaseAuthentication.signInWithEmailAndPassword(email, password)));
+  signIn(email: string, password: string, id: string): Observable<void | object> {
+    return from(this.firebaseAuthentication.signInWithEmailAndPassword(email, password))
+      .pipe(
+        (userObs) => {
+          from(Storage.set({ key: 'authenticated', value: 'true' }));
+          from(Storage.set({ key: 'user', value: id }));
+          return userObs;
+        },
+      );
+  }
+
+  getUsers(): Observable<any> {
+    return this.http.get(this.baseUrl + `/users.json`);
   }
 
   signOut(): Observable<void> {
@@ -45,7 +60,6 @@ export class AuthService {
 
   async isAuthenticated(): Promise<boolean> {
    const storedKey = await Storage.get({ key: 'authenticated'});
-   console.log(storedKey.value, 'STORED KEY')
    return storedKey.value ? true : false;
   }
 

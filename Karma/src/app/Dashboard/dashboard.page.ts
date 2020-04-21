@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
-import { Action } from '../types/interfaces';
+import { Action, User } from '../types/interfaces';
 import { Plugins } from '@capacitor/core';
 import { from } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 const { Storage } = Plugins;
 
@@ -14,13 +15,19 @@ const { Storage } = Plugins;
 export class DashboardPage implements OnInit {
   actions: Action[];
   filteredActions: Action[];
+  user: User;
 
   constructor(private client: DashboardService) {}
 
   ngOnInit() {
     this.loadActions();
-    from(Storage.get({ key: 'authenticated'}))
-      .subscribe((user) => console.log('authenticated', user.value));
+    from(Storage.get({ key: 'user'}))
+      .pipe(
+        switchMap((user) => this.client.getUser(user.value))
+      )
+      .subscribe((user) => {
+        this.user = user;
+      });
   }
 
   loadActions(): void {

@@ -2,6 +2,8 @@ import { Component  } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 
+import { switchMap } from 'rxjs/operators';
+
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
@@ -19,6 +21,9 @@ export class SignupComponent {
 
   onSubmit() {
     this.auth.signUp(this.signUpForm.value)
+      .pipe(
+        switchMap(() => this.auth.createUser(this.signUpForm.value)),
+      )
       .subscribe({
         next: (user) => {
           if (user) {
@@ -27,6 +32,7 @@ export class SignupComponent {
         },
         error: (error) => alert(error)
       });
+
     this.signUpForm.setValue({
       username: '',
       email: '',

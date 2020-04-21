@@ -1,7 +1,9 @@
 <ion-content
   [fullscreen]="true"
 >
-  <app-header></app-header>
+  <app-header
+    [user]="user"
+  ></app-header>
   <ion-searchbar
     (ionInput)="onChange($event)"
     animated

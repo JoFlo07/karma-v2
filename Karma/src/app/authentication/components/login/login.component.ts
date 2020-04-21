@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 
+import { switchMap, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +20,21 @@ export class LoginComponent {
 
   onSubmit() {
     const { email, password } = this.logInForm.value;
-    this.auth.signIn(email, password)
+    this.auth.getUsers()
+    .pipe(
+      map((users) => {
+        let userId: string;
+        for (const key in users) {
+          if (users[key].email === email) {
+            userId = key;
+          }
+        }
+        return userId;
+      }),
+      switchMap((id) => {
+        return this.auth.signIn(email, password, id);
+      }),
+    )
       .subscribe({
         next: (user) => {
           if (user === null) {
